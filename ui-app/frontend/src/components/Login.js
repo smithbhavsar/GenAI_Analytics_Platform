@@ -12,7 +12,7 @@ function Login() {
   });
 
   const { email, password } = formData;
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigate function
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -20,9 +20,11 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post('/api/auth/login', { email, password });
-      console.log(res.data);
-      localStorage.setItem('token', res.data.token);
-      navigate('/dashboard'); // Redirect to a secure page after login
+      console.log(res.data);  // Log the response data
+      localStorage.setItem('token', res.data.token); 
+      localStorage.setItem('name', res.data.name);
+      console.log(res.data.name) 
+      navigate('/'); // Redirect to dashboard or home page
     } catch (err) {
       console.error(err.response.data);
     }

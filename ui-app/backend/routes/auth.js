@@ -96,7 +96,8 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          name: user.name // Include user name in the payload
         }
       };
 
@@ -106,7 +107,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token, name: user.name }); // Send user name along with the token
         }
       );
     } catch (err) {
