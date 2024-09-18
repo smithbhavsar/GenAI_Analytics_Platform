@@ -1,0 +1,2 @@
+# GenAI_Analytics_Platform
+Cloud_Native_GenAI_Analytics_Platform_for_SMBs
