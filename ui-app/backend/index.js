@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth'); // Import the auth routes
 const cors = require('cors'); // Import CORS middleware
+const uploadRoute = require('./routes/upload');
+const fileRouter = require('./routes/fileRouter');
+
 
 const app = express();
 const port = 5000;
@@ -10,6 +13,8 @@ const port = 5000;
 app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON data
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
+app.use('/api', uploadRoute);
+app.use('/api/files', fileRouter);
 
 // Routes
 app.use('/api/auth', authRoutes); // Use the auth routes
